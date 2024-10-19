@@ -38,7 +38,7 @@ CREATE TABLE Asistente_Virtual (
     nombreAsistente VARCHAR(20) NOT NULL,
     idiomas VARCHAR(300), -- ¿Como funcionaría para poder poner varios idiomas?
     generoAsistente VARCHAR(20) NOT NULL,
-        CHECK (generoUsuario IN ('Femenino', 'Masculino', 'No binario')),
+        CHECK (generoAsistente IN ('Femenino', 'Masculino', 'No binario')),
     historia VARCHAR(200),
     rol VARCHAR(5) NOT NULL,
         CHECK (rol IN ('Amigo', 'Tutor', 'Coach'))
