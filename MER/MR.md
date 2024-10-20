@@ -83,7 +83,7 @@ integracion (email, id_app, fecha_confirmacion, hora_confirmacion)
     - FK: email --> Usuario
     - FK: id_app --> Aplicacion
 
-compra (id_compra, email, id_paquete, hora)
+compra (id_compra, email, id_paquete, fecha, hora)
     - PK: id_compra
     - FK: email --> Usuario
     - FK: id_paquete --> Paquete

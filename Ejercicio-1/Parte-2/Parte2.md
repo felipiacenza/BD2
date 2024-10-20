@@ -1,6 +1,7 @@
 En Usuario: 
 - el correo y el telefono son unicos. lo que pueden indicar claves alteras o candidatas
 - los valores del rango de edad son: "18-24","25-34","35-44","45-54","55,64","65 o más"
+- La fecha_nac tiene que ser coherente al rango de edad
 
 
 En Asistente:
@@ -47,3 +48,11 @@ Suscripciones:
 - Si el usuario tiene una suscripcion "Gratis", solo tiene accesso a que su asistente sea "Amigo".
 - Si el usuario tiene una suscripcion "Pro", tiene acceso al resto de de opciones.
 - El tipo de suscripcion puede ser: "gratis", "mensual", "anual", "de por vida"
+
+En la relación integracion:
+- fecha_confirmacion debe ser menor o igual al día de hoy
+- hora_confirmación debe ser menor o igual a la hora actual
+
+En la relación compra:
+- la fecha debe ser menor o igual a la hora actual
+- la hora debe ser menor o igual al día
