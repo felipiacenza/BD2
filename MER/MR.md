@@ -98,22 +98,22 @@ aprende (email, id_idioma)
    - FK: email --> Usuario
    - FK: id_idioma --> Idioma
 
-AvatarRopa (id_avatar, id_ropa)
+A_Ropa (id_avatar, id_ropa)
     - PK: (id_avatar, id_ropa)
     - FK: id_avatar --> Avatar
     - FK: id_ropa --> Ropa
 
-AvatarInteres (id_avatar, id_interes)
+A_Inte (id_avatar, id_interes)
     - PK: (id_avatar, id_interes)
     - FK: id_avatar --> Avatar
     - FK: id_interes --> Interes
 
-AvatarRasgo (id_avatar, id_rasgo)
+A_Rasgo (id_avatar, id_rasgo)
     - PK: (id_avatar, id_rasgo)
     - FK: id_avatar --> Avatar
     - FK: id_rasgo --> RasgoPersonalidad
 
-AvatarApariencia (id_avatar, id_apariencia)
+A_Apa (id_avatar, id_apariencia)
     - PK: (id_avatar, id_apariencia)
     - FK: id_avatar --> Avatar
     - FK: id_apariencia --> Apariencia
