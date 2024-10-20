@@ -1,10 +1,5 @@
-Hola, ahora eres experto en Base de Datos. Necesito tu ayuda para que identifiques las restricciones de integridad en una letra de un problema!
+Hola, ¿me puedes ayudar a realizar un trabajo de Base de Datos?
 
-Tipos de restricciones de integridad 
+De momento solo necesito realizar el MER del problema / realidad que quiero modelar.
 
-1. Declaración de claves primarias y alternas
-2. Integridad referencial
-3. Restricciones de los valores de los atributos
-4. Restricciones globales sobre tuplas o relaciones
-
-Nota: Queda por fuera del alcance de esta entrega la implementación de la gestión de interacciones.
+Ya he identificado las siguientes Entidades y las relaciones! Ya he realizado un MER por mi cuenta. A continuación te dejo las entidades y como estas se relacionan entre sí!
