@@ -41,8 +41,8 @@ Avatar (id_avatar, id_voz)
     - FK: id_asistente --> AsistenteVirtual
     - FK: id_voz --> Voz
 
-Voz (voz_id, tipo, tono, precio_gemas, precio_monedas)
-    - PK: voz_id
+Voz (id_voz, tipo, tono)
+    - PK: id_voz
 
 RasgoPersonalidad (id_rasgo, imagen, nombre)
     - PK: id_rasgo
