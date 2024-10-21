@@ -287,7 +287,7 @@ DECLARE
 BEGIN
     SELECT nombre INTO rol_nombre FROM Rol WHERE id_rol = :NEW.id_rol;
 
-    IF rol_nombre = 'Tutor' AND :NEW.nombre NOT IN ('Apoyo educativo', 'Enseñanzas de Idiomas', 'Preparación de exámenes') THEN
+    IF rol_nombre = 'Tutor' AND :NEW.nombre NOT IN ('Apoyo educativo', 'Enseñanza de Idiomas', 'Preparación de exámenes') THEN
         RAISE_APPLICATION_ERROR(-20002, 'Sub-rol inválido para el rol Tutor');
     ELSIF rol_nombre = 'Coach' AND :NEW.nombre NOT IN ('Planificación', 'Organización del tiempo') THEN
         RAISE_APPLICATION_ERROR(-20002, 'Sub-rol inválido para el rol Coach');
