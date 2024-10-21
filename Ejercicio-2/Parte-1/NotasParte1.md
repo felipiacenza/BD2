@@ -1,0 +1,1 @@
+Para realizar la parte 1 del ejercicio 2 hay que hacer el esquema DAC como se muestra en Aulas pero en vez de con usuarios, con roles. Habría que preguntarle bien al profe de práctico como hacerlo bien, pero ya el de teórico nos dió una idea.
