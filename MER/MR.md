@@ -38,7 +38,6 @@ SubRol (id_subrol, nombre, id_rol)
 
 Avatar (id_avatar, id_voz)
     - PK: id_avatar
-    - FK: id_asistente --> AsistenteVirtual
     - FK: id_voz --> Voz
 
 Voz (id_voz, tipo, tono)
@@ -117,3 +116,8 @@ A_Apa (id_avatar, id_apariencia)
     - PK: (id_avatar, id_apariencia)
     - FK: id_avatar --> Avatar
     - FK: id_apariencia --> Apariencia
+
+tiene (email,id_asistente)
+    - PK: email
+    - FK: eamil --> Usuario
+    - FK: id_asistente --> AsistenteVirtual

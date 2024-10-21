@@ -1,6 +1,35 @@
 ALTER SESSION SET nls_date_format = 'DD/MM/YYYY';
 ALTER SESSION SET nls_timestamp_format = 'HH24:MI:SS';
 
+DROP TABLE Tiene;
+DROP TABLE A_Apa;
+DROP TABLE A_Rasgo;
+DROP TABLE A_Inte;
+DROP TABLE A_Ropa;
+DROP TABLE aprende;
+DROP TABLE maneja;
+DROP TABLE compra;
+DROP TABLE integracion;
+DROP TABLE personifica;
+DROP TABLE Aplicacion;
+DROP TABLE Paquete;
+DROP TABLE Ropa;
+DROP TABLE Apariencia;
+DROP TABLE Interes;
+DROP TABLE RasgoPersonalidad;
+DROP TABLE Avatar;
+DROP TABLE Voz;
+DROP TABLE AsistenteSubRol;
+DROP TABLE AsistenteRol;
+DROP TABLE SubRol;
+DROP TABLE Rol;
+DROP TABLE Idioma;
+DROP TABLE AsistenteVirtual;
+DROP TABLE Billetera;
+DROP TABLE Usuario;
+DROP TABLE Suscripcion;
+DROP TABLE RangoEdad;
+
 CREATE TABLE RangoEdad (
     rango_edad_id INT PRIMARY KEY,
     rango VARCHAR(20) NOT NULL CHECK (rango IN ('18-24', '25-34', '35-44', '45-54', '55-64', '65 o más'))
@@ -23,8 +52,7 @@ CREATE TABLE Usuario (
     telefono VARCHAR(20) UNIQUE,
     id_suscripcion INT,
     FOREIGN KEY (rango_edad_id) REFERENCES RangoEdad(rango_edad_id),
-    FOREIGN KEY (id_suscripcion) REFERENCES Suscripcion(id_suscripcion),
-    CHECK (fecha_nac <= CURRENT_DATE)
+    FOREIGN KEY (id_suscripcion) REFERENCES Suscripcion(id_suscripcion)
 );
 
 CREATE TABLE Billetera (
@@ -35,7 +63,6 @@ CREATE TABLE Billetera (
     PRIMARY KEY (id_billetera, email),
     FOREIGN KEY (email) REFERENCES Usuario(email)
 );
-
 
 CREATE TABLE AsistenteVirtual (
     id_asistente INT PRIMARY KEY,
@@ -61,11 +88,34 @@ CREATE TABLE SubRol (
     FOREIGN KEY (id_rol) REFERENCES Rol(id_rol)
 );
 
+CREATE TABLE AsistenteRol (
+    id_asistente INT,
+    id_rol INT,
+    PRIMARY KEY (id_asistente, id_rol),
+    FOREIGN KEY (id_asistente) REFERENCES AsistenteVirtual(id_asistente),
+    FOREIGN KEY (id_rol) REFERENCES Rol(id_rol)
+);
+
+CREATE TABLE AsistenteSubRol (
+    id_asistente INT,
+    id_subrol INT,
+    PRIMARY KEY (id_asistente, id_subrol),
+    FOREIGN KEY (id_asistente) REFERENCES AsistenteVirtual(id_asistente),
+    FOREIGN KEY (id_subrol) REFERENCES SubRol(id_subrol)
+);
+
 CREATE TABLE Voz (
-    id_voz INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    id_voz INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     tipo VARCHAR(20) CHECK (tipo IN ('femenina', 'masculina')),
     tono VARCHAR(20) CHECK (tono IN ('alegre', 'calmo', 'seguro', 'enérgico', 'optimista'))
 );
+
+CREATE TABLE Avatar (
+    id_avatar INT PRIMARY KEY,
+    id_voz INT,
+    FOREIGN KEY (id_voz) REFERENCES Voz(id_voz)
+);
+
 
 CREATE TABLE RasgoPersonalidad (
     id_rasgo INT PRIMARY KEY,
@@ -123,24 +173,24 @@ CREATE TABLE personifica (
 CREATE TABLE integracion (
     email VARCHAR(100),
     id_app INT,
-    fecha_confirmacion DATE CHECK (fecha_confirmacion <= CURRENT_DATE),
-    hora_confirmacion TIME CHECK (hora_confirmacion <= CURRENT_TIME),
+    fecha_confirmacion DATE,
+    hora_confirmacion TIMESTAMP,
     PRIMARY KEY (email, id_app),
     FOREIGN KEY (email) REFERENCES Usuario(email),
     FOREIGN KEY (id_app) REFERENCES Aplicacion(id_app)
 );
 
+
 CREATE TABLE compra (
     id_compra INT PRIMARY KEY,
     email VARCHAR(100),
     id_paquete INT,
-    fecha DATE CHECK (fecha <= CURRENT_DATE),
-    hora TIME CHECK (hora <= CURRENT_TIME),
+    fecha DATE,
+    hora TIMESTAMP,
     metodo_pago VARCHAR(50) CHECK (metodo_pago IN ('tarjeta de credito', 'paypal', 'transferencia bancaria')),
     FOREIGN KEY (email) REFERENCES Usuario(email),
     FOREIGN KEY (id_paquete) REFERENCES Paquete(id_paquete)
 );
-
 
 CREATE TABLE maneja (
     id_asistente INT,
@@ -190,6 +240,15 @@ CREATE TABLE A_Apa (
     FOREIGN KEY (id_apariencia) REFERENCES Apariencia(id_apariencia)
 );
 
+CREATE TABLE Tiene (
+    email VARCHAR2(100),
+    id_asistente INT,
+    PRIMARY KEY (email),
+    FOREIGN KEY (email) REFERENCES Usuario(email),
+    FOREIGN KEY (id_asistente) REFERENCES AsistenteVirtual(id_asistente)
+);
+
+
 
 -- Triggers
 
@@ -237,37 +296,61 @@ END;
 /
 
 CREATE OR REPLACE TRIGGER trg_check_rol_suscripcion
-BEFORE INSERT OR UPDATE ON AsistenteVirtual
+BEFORE INSERT OR UPDATE ON AsistenteRol
 FOR EACH ROW
 DECLARE
     suscripcion_tipo VARCHAR2(20);
+    rol_amigo_id INT;
 BEGIN
-    SELECT tipo INTO suscripcion_tipo 
+    -- Obtener el tipo de suscripción del usuario relacionado con el asistente virtual
+    SELECT s.tipo INTO suscripcion_tipo 
     FROM Suscripcion s
     JOIN Usuario u ON u.id_suscripcion = s.id_suscripcion
-    WHERE u.email = :NEW.email;
+    JOIN Tiene t ON t.email = u.email
+    WHERE t.id_asistente = :NEW.id_asistente;
 
-    IF suscripcion_tipo = 'gratis' AND :NEW.id_rol != (SELECT id_rol FROM Rol WHERE nombre = 'Amigo') THEN
+    -- Obtener el id del rol 'Amigo'
+    SELECT id_rol INTO rol_amigo_id FROM Rol WHERE nombre = 'Amigo';
+
+    -- Validar que si la suscripción es "gratis", solo se permita el rol "Amigo"
+    IF suscripcion_tipo = 'gratis' AND :NEW.id_rol != rol_amigo_id THEN
         RAISE_APPLICATION_ERROR(-20003, 'Con la suscripción "Gratis" solo se permite el rol "Amigo"');
     END IF;
 END;
 /
 
 CREATE OR REPLACE TRIGGER trg_check_idioma_subrol
-BEFORE INSERT OR UPDATE ON SubRol
+BEFORE INSERT OR UPDATE ON AsistenteSubRol
 FOR EACH ROW
 DECLARE
     idioma_count INT;
     rol_nombre VARCHAR2(50);
+    subrol_nombre VARCHAR2(50);
+    usuario_email VARCHAR2(100);
 BEGIN
-    SELECT nombre INTO rol_nombre 
-    FROM Rol 
-    WHERE id_rol = :NEW.id_rol;
+    -- Obtener el nombre del rol asociado al sub-rol
+    SELECT r.nombre INTO rol_nombre 
+    FROM Rol r
+    JOIN SubRol sr ON sr.id_rol = r.id_rol
+    WHERE sr.id_subrol = :NEW.id_subrol;
 
-    IF rol_nombre = 'Tutor' AND :NEW.nombre = 'Enseñanzas de Idiomas' THEN
+    -- Obtener el nombre del sub-rol
+    SELECT sr.nombre INTO subrol_nombre
+    FROM SubRol sr
+    WHERE sr.id_subrol = :NEW.id_subrol;
+
+    -- Si el rol es "Tutor" y el sub-rol es "Enseñanzas de Idiomas"
+    IF rol_nombre = 'Tutor' AND subrol_nombre = 'Enseñanzas de Idiomas' THEN
+        -- Obtener el email del usuario asociado al asistente
+        SELECT u.email INTO usuario_email
+        FROM Usuario u
+        JOIN Tiene t ON t.email = u.email
+        WHERE t.id_asistente = :NEW.id_asistente;
+
+        -- Verificar si el usuario ha seleccionado al menos un idioma
         SELECT COUNT(*) INTO idioma_count 
         FROM aprende 
-        WHERE email = :NEW.email;
+        WHERE email = usuario_email;
 
         IF idioma_count = 0 THEN
             RAISE_APPLICATION_ERROR(-20004, 'Debe seleccionar al menos un idioma para el sub-rol "Enseñanza de Idiomas"');
@@ -283,6 +366,32 @@ BEGIN
     -- Validar que el método de pago sea "tarjeta de crédito"
     IF :NEW.metodo_pago != 'tarjeta de credito' THEN
         RAISE_APPLICATION_ERROR(-20005, 'El paquete solo puede ser comprado con tarjeta de crédito');
+    END IF;
+END;
+/
+
+CREATE OR REPLACE TRIGGER trg_check_fecha_nac_valid
+BEFORE INSERT OR UPDATE ON Usuario
+FOR EACH ROW
+BEGIN
+    IF :NEW.fecha_nac > SYSDATE THEN
+        RAISE_APPLICATION_ERROR(-20006, 'La fecha de nacimiento no puede ser futura.');
+    END IF;
+END;
+/
+
+CREATE OR REPLACE TRIGGER trg_check_integracion
+BEFORE INSERT OR UPDATE ON integracion
+FOR EACH ROW
+BEGIN
+    -- Validar que la fecha de confirmación no sea futura
+    IF :NEW.fecha_confirmacion > SYSDATE THEN
+        RAISE_APPLICATION_ERROR(-20006, 'La fecha de confirmación no puede ser posterior a la fecha actual.');
+    END IF;
+
+    -- Validar que la hora de confirmación no sea futura
+    IF :NEW.hora_confirmacion > SYSTIMESTAMP THEN
+        RAISE_APPLICATION_ERROR(-20007, 'La hora de confirmación no puede ser posterior a la hora actual.');
     END IF;
 END;
 /
