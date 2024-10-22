@@ -1,32 +1,54 @@
-![image](https://github.com/user-attachments/assets/25f5f309-abf6-4f7d-b84b-f74f4c83d512)
-Cada usuario debe tener una suscripción, esto se puede ver con la cardinalidad de Suscripción (1, 1) y el punto en el MER por la entidad Usuario. Llegamos a esta
-conclusión a través de la letra dada.
+# Justificación del planteamiento de la solución
 
-![image](https://github.com/user-attachments/assets/566ec660-4107-49bb-b095-09020ce42ff3)
-Al momento de suscribirse, el usuario tiene unicamente la posibilidad de pagar por el servicio o no, de forma que en el MER, se crea una categorización desde Suscripción, 
-teniendo así las entidades Gratuito y Pago. 
+## Relación entre Usuario y Suscripción
+Según la letra, cada usuario debe de tener 1 y solo 1 suscripción asociada. Esto se puede ver con la cardinalidad que existe entre Suscripción (1,1) y Usuario (0,N). Esta relación además, posee totalidad, es decir, remarca la sentencia de 'todos los usuarios tienen una suscripción'.
+Llegamos a esta conclusión mediante la letra del problmea dado.
 
-![image](https://github.com/user-attachments/assets/e2d7904b-fc66-402c-8546-3f45ed869c66)
-Por otra parte, cada usuario posee una billetera digital personal. Esto se demuestra en el MER por la cardinalidad de la relación "posee". Esta relación es débil ya que 
-la entidad Billetera que es parte de la relación, es débil. Esta entidad no tiene razón de existir sin la entidad Usuario asociado.
+## Entidad Suscripción
+Al momento de suscribirse, el usuario tiene unicamente la posibilidad elegir un tipo de suscripción. Cada tipo de suscripción cuenta con un precio (que puede ser 0).
+Para este tipo de entidad lo más común es hacer una categorización. Sin embargo, debido a que esta entidad no ofrece mayor complejidad, la categorización no fue de utilidad para realizar dicha entidad.
 
-![image](https://github.com/user-attachments/assets/0ba8a3b4-b778-47a0-8096-c780d13acd84)
-El usuario con billetera, puede comprar paquetes por lo que en el MER, la relación que se genera entre el usuario y la billetera, se relaciona con la entidad Paquetes de forma (0, N) a (0, N) ya 
-que no es obligatorio que el usuario compre estos.
+## Entidad Billetera y Relación "posee"
+Por otra parte, cada usuario posee una billetera digital personal. Esta sentencia se demuestra en el MER por la cardinalidad de la relación (uno y un solo usurio tiene una y solo una billetera; o una billetera es de un solo usuario)
+Esta relación presente es debil, debido a que una billetera no tiene razón de existir si no está estrictamente viculada con un usuario.
 
-![image](https://github.com/user-attachments/assets/0da92c38-12dc-4ee1-b22b-1c54857a3206)
-Además, cada usuario tiene la opción de realizar integraciones con aplicaciones donde se debe guardar la información de la fecha y hora de la confirmación de acceso por parte del usuario.
-Un usuario puede realizar inegraciones con varias aplicaciones o con ninguna, por lo que las cardinalidades de esta relación son (0, N) a (0, N).
+## Entidad Paquetes
+Los paquetes solo pueden contener o gemas o monedas. Por lo tanto, esta restricción se limita con el atributo tipo, siendo los posibles valores "gemas" o "monedas".
+Esta deducción se sacó de la letra del problema
 
-![image](https://github.com/user-attachments/assets/22935d2a-b60e-407c-bb91-0cced6d94950)
-Cada usuario también puede aprender varios idiomas, teniendo una relación (0, N) a (0, N).
+## Relación compra
+El usuario con su billetera puede comprar paquetes. Esto se demuestra en el MER con la relación que se genera entre el usuario, su billetera, y los paquetes, de forma (0,N) a (0,N). Esto indica que un usuario puede comprar de 0 a N paquetes y que un paquete puede ser comprado por 0 o N usuarios. Esto indica que en ningún momento es obligatorio comprar paquetes.
+Esta deducción se sacó de la letra del problema
 
-![image](https://github.com/user-attachments/assets/c2f0a70c-e999-4598-84a5-e1842afd6951)
-La aplicación Replika cuenta con avatares a los cuales se le puede modificar la ropa, los intereses, los rasgos, la voz y la apariencia. Por esta razón, en el MER, la entidad Avatar
-se relaciona con las entidades Ropa, Interes, Rasgo, Voz y Apariencia, teniendo que tener al menos una seleccionada de cada una de estas entidades.
+## Relación de integración con aplicaciones
+Cada usuario tiene la opción de realizar integraciones con aplicaciones. Cuando se reliza la integración, se guarda información tal como la fecha y hora de confirmación de acceso por parte del usuario.
+Un usuario puede realizar integraciones con varias aplicaciones o con ninguna, por lo que las cardinalidades de esta relación son (0,N) a (0,N).
+Llegamos a esta conclusión mediante letra.
 
-![image](https://github.com/user-attachments/assets/1f35c148-1d27-4bc4-9967-4a3e6c78898d)
-Por su parte, por letra se da a entender que cada avatar personfica a un asistente virtual y cada asistente tiene asociado un único avatar. Teniendo una cardinalidad de (1, 1) a (1, 1). 
+## Relación de aprende idiomas
 
-![image](https://github.com/user-attachments/assets/ea198433-1229-4be5-90fa-78aa47473c93)
-Por último, en el caso de seleccionar "Enseñanza de Idiomas", cada asistente virtual puede manejar uno o varios idiomas, con el fin de enseñarselo al Usuario.
+Cada usuario puede aprender varios idiomas disponibles. Por lo tanto, deducimos por la letra que las cardinalidades de esta relación son de (0,N) a (0,N) (ningún usuario o muchos usuarios pueden aprender ninguno o muchos idomas)
+
+## Avatares
+
+La aplicación Replika cuenta con vatares a los cuales se les puede modificar la ropa, los intereses, los rasgos, la voz y la apariencia. Esto se entiende por letra y por lo tanto, en el MER, llegamos a la conclusión que cada una de estas cosas que se pueden modificar son una entidad aparte y se relacionan con el avatar.
+
+Según concluimos:
+- Un Avatar puede tener 1 o N ropas seleccionadas.
+- Un Avatar puede tener 1 o N intereses seleccionados
+- Un Avatar puede tener 1 o N rasgos seleccionados
+- Un Avatar puede tener 1 o 1 voz seleccionada, debido a que sería incoherente que tenga varias voces en distintos momentos.
+- Un Avatar puede tener 1 o N apariencias. Las apariencias refieren a lo físico y se dividen en distintas categorías como piel, cabello, cuerpo, etc.
+
+## Relación personifica
+Por otro lado, la letra del problema da a entender que el asistente virtual es personificado por un avatar. Por lo tanto, un asistente virtual es personificado por uno y solo un Avatar, cardinalidad (1,1) a (1,1). 
+
+## Relación de maneja idiomas
+
+Los asistentes virtuales tienen la opción de manejar idiomas. Esto es posible solamente si el asistente tiene el rol de "Enseñanza de Idiomas".
+Un asistente puede manejar almenos un idioma a muchos idiomas pero no todos los idiomas tienen que ser obligatoriamente manejados por al menos un aistente. Por lo tanto la cardialdiad de esta relación es de (0,N) a (1,N)
+Llegamos a esta conclusión por letra.
+
+## Relación Usuario tiene Asistente
+Si bien, para esta parte no se pide guardar las interacciones del usuario con su asistente, es importante enlazar de alguna manera que un usuario tiene un asistente.
+Llegamos a la conclusión que la mejor manera es simplemente mediante una relación llamada 'tiene' en donde se guardan las PKs de ambas entidades. Según la letra, un usuario solo puede tener un asistente virtual y un asistente virtual solo puede interactuar o ser de un solo usuario. Por lo tanto, la cardinalidad de esta relación es de (1,1) a (1,1).
