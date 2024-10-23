@@ -42,6 +42,15 @@ WHERE email = SESSION_USER;
 GRANT SELECT ON vista_usuario_final TO usuario_final;
 GRANT UPDATE (password, genero, telefono) ON vista_actualizacion_usuario_final TO usuario_final;
 
+Si fuese con vistas:
+
+CREATE VIEW vista_usuario_final AS
+SELECT email, nombre, apellido, genero, telefono
+FROM usuarios
+WHERE email = SESSION_USER;  -- Asumiendo que el email del usuario se corresponde con la sesión
+
+NOTA: Preguntarle bien al profe como sería la vista
+
 4. Privilegios para los Diseñadores de Contenido
 Los diseñadores de contenido tienen permisos para crear y actualizar apariencias y vestimentas. Se asume que estas están en una tabla llamada apariencias:
 
