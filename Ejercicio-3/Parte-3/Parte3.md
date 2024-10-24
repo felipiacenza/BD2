@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Cantidad de tuplas por tablas (estimaciones)
 
 La letra plantea lo siguiente:
@@ -10,3 +11,6 @@ Por lo tanto, las cantidades de tuplas por tablas son las siguientes:
 
 
 
+=======
+La parte 3 es la tabla que está en DRIVE. Capaz que podemos justificar algunos datos.
+>>>>>>> ejercicio3

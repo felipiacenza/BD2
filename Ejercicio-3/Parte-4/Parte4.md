@@ -22,6 +22,6 @@ Proyección:
 
 SELECT u.nombre
 
-(inserar arbol)
+(insertar arbol)
 
 Este arbol representa incialmente el plan lógico antes de aplicar optimizaciones.
