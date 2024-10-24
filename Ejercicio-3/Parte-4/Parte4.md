@@ -1,6 +1,5 @@
 Para obtener el plan lógico a partir del arbol inicial o canónico primero es necesario crear el árbol inicial. Para ello, construimos el árbol inicial basado en la consulta SQL.
 
-Árbol inicial o canónico:
 Operación de selección (WHERE):
 
 p.nombre_pais = 'Uruguay'
@@ -24,3 +23,5 @@ Proyección:
 SELECT u.nombre
 
 (inserar arbol)
+
+Este arbol representa incialmente el plan lógico antes de aplicar optimizaciones.
