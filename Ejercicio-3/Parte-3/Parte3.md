@@ -1,0 +1,1 @@
+La parte 3 es la tabla que está en DRIVE. Capaz que podemos justificar algunos datos.
