@@ -10,14 +10,15 @@ Tabla Billetera:
         Cantidad de bloques: 20.000.000 / 19 = 1.052.632
 
     - Selección:
-        Por letra, solo el 26% de los usuarios no tienen más de 400 gemas.
+        Por letra, solo el 24% de los usuarios no tienen más de 400 gemas.
 
-        El 26% de los usuarios sería 5.200.000.
+        El 24% de los usuarios sería 5.200.000.
 
         --> Factor de bloqueo : igual al de la proyección, es decir 19
 
-        Cantidad de bloques: 5.200.000 / 19 = 273.684
+        Cantidad de bloques: 4.800.000 / 19 = 266.667
 
+        Costo total: log(18)(20.000.000) +266.667 = 266.673 bloques
 
 Tabla Usuario:
 
@@ -48,7 +49,11 @@ Tabla Usuario:
 
         ---> Factor de bloqueo es igual a la proyección: 10
 
-        Cantidad de bloques: 2.891.165 / 10 = 289.117
+        Cantidad de bloques: 2.891.165 / 10 = 289.117   
+
+        Costo total: 289,121 bloques
+
+
 
 
 Tabla Pais:
@@ -79,6 +84,73 @@ Tabla Asistente
         id_asistente: 4
         rol: 50
         subrol: 50
+        Tamaño de tupla: 104
 
-        --> Factor de bloqueo
+        --> Factor de bloqueo: 2048 / 104 = 19
+        Cantidad de tuplas estimadas: 20.000.000 / 19
+        --> 1.052.632 bloques
 
+    - Selección:
+        Condición: subrol = 'Enseñanza de Idiomas' y rol = 'Tutor'
+
+        Por letra, sabemos que el 20% de los asistentes son de tipo (rol) Tutor.
+        Dentro de los tutores, los subroles posibles son: Apoyo educativo, Enseñanza de Idiomas o Preparación de Exámenes. Si las distribuciónes son unifomres y proporcionales, podemos afirmar que el 33,3% son Tutores con el subrol 'Enseñanza de Idiomas'
+
+        --> El 20% de los asistentes: 20.000.000 * 0,20 = 4.000.000
+
+        --> De esos 4.000.000 de Asistentes tutores, el 33% son de sub-rol 'Enseñanza de Idiomas': 4.000.000 * ' 0,33 = 1.320.000
+
+        --> Factor de bloqueo: igual al de la proyección
+
+        --> Cantidad de bloques: 1.320.000 / 19 = 69.474
+
+Cálculo de Joins
+
+    Para el cálculo de los Joins, vamos a utilizar la fórmula de Indexed Nested Loop Joins
+
+    - bR: cantidad de bloques de la tabla externa (en este caso, la que sería "outer table").
+
+    - bS: cantidad de bloques de la tabla interna (en este caso, la que sería "inner table").
+
+    - M: cantidad de búfers disponibles (14 en este caso).
+
+    Fórmula: 2 * (bR + bS) * (⌈log(M-1)(bS)⌉ - 1) + bR + bS
+
+    - Join Usuario - Billetera
+
+        Cantidad de bloques de Usuario luego de la selección 273.684 (bR)
+
+        Cantidad de bloques de Billetera luego de la selección: 289.117 (bS)
+
+        --> Cantidad de bloques del Join: 5.065.209
+
+
+    - Join Maneja - Idioma
+        Cantidad de bloques de Maneja: 4.375 (bS)
+        Cantidad de bloques de Idioma luego de selección: 1 (bR)
+
+        --> 1 + ((1 * 4375) / (14-2)) = 366
+
+    - Join Asistente - Tiene
+        Cantidad de bloques de Asistente luego de la selección: 69.474 (bR)
+        Cantidad de bloques de Tiene: 1.052.632 (bS)
+
+        --> 69.474 (69.474 * 1.052.632 / (14-2)) = 6.096.552.605
+
+    - Join entre Join Usuario - Billetera y Pais
+        Cantidad de bloques del Join Usuario - Billetera: 5.065.209 (bS)
+        Cantidad de bloques de Pais: 1 (bR)
+
+        --> 1 ((1*6.594.165.103)/(14-2)) = 549.513.760
+
+    - Join entre Join Maneja - Idioma y Join Asistente - Tiene
+        Cantidad de bloques del Join Maneja - Idioma: 366 (bR)
+        Cantidad de bloques de Join Asistente - Tiene: 6.096.552.605 (bS)
+
+        --> 366 ((366*6.096.552.605)/(14-2)) = 185.944.268.794
+
+    - Join final:
+        - Cantidad de bloques del Join izquierdo: 549.513.760 (bR)
+        - Cantidad de bloques del Join derecho: 185.944.268.794 (bS)
+
+        ---> 549.513.760 + ((549.513.760 * 185.944.268.794)/(14-2)) = 8.518.537.877.485.251.947
