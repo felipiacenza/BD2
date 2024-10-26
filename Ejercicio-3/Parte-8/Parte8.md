@@ -1,11 +1,13 @@
-Índices generados por el DBMS
+Para identificar los índices que genera automáticamente el DBMS al crear nuevas tablas en la base de datos, normalmente se crean índices sobre:
 
-Al momento de crear las tablas, el DBMS genera automáticamente algunos índices, especialmente sobre las claves primarias y, en algunos casos, claves únicas. Estos índices suelen optimizar búsquedas y combinaciones que implican columnas clave.
+Claves Primarias: Al definir una clave primaria (PRIMARY KEY), el DBMS generalmente crea un índice único sobre dicha columna o conjunto de columnas para asegurar su unicidad y optimizar su acceso.
 
-Para visualizar los índices generados por el DBMS en Oracle, puedes utilizar esta consulta en el esquema donde creaste las tablas:
+Claves Únicas: Las restricciones de clave única (UNIQUE) también generan automáticamente índices para mantener la unicidad en esas columnas y optimizar las búsquedas.
 
-SELECT index_name, table_name, column_name
-FROM all_ind_columns
-WHERE table_name IN ('USUARIO', 'BILLETERA', 'PAIS', 'TIENE', 'ASISTENTEVIRTUAL', 'MANEJA', 'IDIOMA');
+Para visualizar los índices que el DBMS (en este caso, Oracle) genera automáticamente al crear nuevas tablas con restricciones de claves, puedes ejecutar la siguiente consulta SQL, que proporciona información sobre todos los índices generados en las tablas de la base de datos:
 
-Esto te permitirá ver qué índices están asociados a tus tablas principales. Generalmente, Oracle generará índices para las claves primarias de las tablas (email en Usuario, id_pais en Pais, etc.).
+SELECT ai.index_name, ai.table_name, ai.uniqueness, aic.column_name
+FROM all_indexes ai
+JOIN all_ind_columns aic ON ai.index_name = aic.index_name
+WHERE ai.table_owner = 'BD_1'
+AND ai.generated = 'Y';

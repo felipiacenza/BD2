@@ -1,9 +1,6 @@
-Obtener el plan de ejecución
-Para obtener el plan de ejecución de la consulta SQL y analizar cómo el DBMS procesa cada parte, sigue estos pasos:
+Paso 1: Obtener el Plan de Ejecución
 
-Comando para generar el plan de ejecución:
-
-En Oracle, puedes utilizar EXPLAIN PLAN FOR seguido de la consulta para obtener el plan de ejecución. El resultado se guarda en la tabla PLAN_TABLE:
+Ejecutar el comando EXPLAIN PLAN:
 
 EXPLAIN PLAN FOR
 SELECT u.nombre
@@ -21,19 +18,35 @@ WHERE p.nombre_pais = 'Uruguay'
     AND av.subrol = 'Enseñanza de Idiomas'
     AND i.id_idioma = 'Inglés';
 
-Visualización del plan:
 
-Luego, ejecuta el siguiente comando para ver el plan de ejecución detallado:
+Visualizar el Plan de Ejecución:
 
 SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY());
 
-Análisis del plan de ejecución:
 
-El plan de ejecución muestra los pasos en los que el DBMS recupera los datos, como:
+Paso 3: Análisis del Plan de Ejecución
 
-Índices utilizados: si usa un índice ya existente o recorre la tabla completamente.
+El plan de ejecución detallado contiene información importante, como:
 
-Operaciones JOIN: indica cómo se están procesando las combinaciones entre tablas (por ejemplo, HASH JOIN, NESTED LOOPS, etc.), lo cual es clave para determinar la eficiencia del procesamiento de la consulta.
+Operaciones de Acceso a Tablas e Índices: Como FULL TABLE SCAN, INDEX SCAN (donde se usa algún índice), etc. Esto indica si el DBMS accede a una tabla entera o utiliza un índice para obtener los datos más rápido.
 
-La consulta está diseñada con múltiples combinaciones JOIN, que pueden beneficiarse de índices en columnas de combinación (como email y id_asistente en Usuario, AsistenteVirtual, y Tiene) y en columnas filtradas (como fecha_reg, cant_gemas, nombre_pais, rol, subrol, id_idioma). Si el plan de ejecución muestra escaneos completos (FULL TABLE SCAN) en varias tablas, entonces agregar índices en estas columnas clave puede optimizar el rendimiento.
+Operaciones JOIN: Indica el tipo de combinación que utiliza el DBMS (como HASH JOIN, NESTED LOOPS, etc.), y el orden en que se ejecutan.
 
+Filtro y Selección: Muestra si se aplican filtros sobre las columnas (como cant_gemas < 400, nombre_pais = 'Uruguay', etc.).
+
+
+Paso 4: Comparación del Plan de Ejecución con la Propuesta del Punto 5
+
+Ahora, compara este plan con la propuesta de optimización del punto 5. En la propuesta, mencionamos la creación de índices en columnas clave (email, id_pais, id_asistente, etc.) y en columnas utilizadas en filtros (fecha_reg, cant_gemas, rol, subrol, id_idioma), lo cual debería minimizar el uso de FULL TABLE SCAN y maximizar el uso de INDEX SCAN.
+
+Aspectos a evaluar en la comparación:
+
+Si los índices sugeridos en el punto 5 están bien implementados, el plan de ejecución debería reflejar más operaciones de INDEX SCAN en lugar de FULL TABLE SCAN.
+
+Observa si los JOIN se optimizan con los índices, lo que reduciría el tiempo de ejecución. Idealmente, NESTED LOOPS o HASH JOIN deberían ejecutarse rápidamente con índices adecuados.
+
+Breve Análisis
+
+Si el plan muestra mejoras en el uso de índices después de implementarlos (menos FULL TABLE SCAN y más INDEX SCAN), se confirma que los índices ayudan a reducir el tiempo de ejecución.
+
+La presencia de NESTED LOOPS o HASH JOIN indica cómo el DBMS maneja la combinación de tablas. Estas operaciones suelen ser más eficientes cuando las columnas de combinación están indexadas, especialmente en consultas con varios JOIN.
