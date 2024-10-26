@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="ld3mcQhA281-zXJmEGoM" name="Page-1">
-        <mxGraphModel dx="-24" dy="1853" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="193" dy="1693" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -249,7 +249,7 @@
                 <mxCell id="72" value="Cantidad de bloques = 1.052.632" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;" parent="1" vertex="1">
                     <mxGeometry x="1126" y="815" width="230" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="73" value="Cantidad de bloques: 266.673" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;" parent="1" vertex="1">
+                <mxCell id="73" value="Cantidad de bloques: 252.638" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;" parent="1" vertex="1">
                     <mxGeometry x="1145" y="665" width="210" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="74" value="Cantidad de bloques: 2.000.000" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;" parent="1" vertex="1">
@@ -261,34 +261,34 @@
                 <mxCell id="76" value="Cantidad de bloques: 9" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="1928" y="747.5" width="150" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="77" value="Cantidad de bloques: 1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;" parent="1" vertex="1">
-                    <mxGeometry x="1931.25" y="594.75" width="150" height="30" as="geometry"/>
+                <mxCell id="77" value="Cantidad de bloques: 3,2" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="1916.25" y="594.75" width="180" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="78" value="Cantidad de bloques: 1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;" parent="1" vertex="1">
-                    <mxGeometry x="2510" y="853" width="150" height="30" as="geometry"/>
+                <mxCell id="78" value="Cantidad de bloques: 2,7" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="2495" y="853" width="180" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="79" value="Cantidad de bloques: 69.474" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;" parent="1" vertex="1">
-                    <mxGeometry x="2705" y="720" width="180" height="30" as="geometry"/>
+                <mxCell id="79" value="Cantidad de bloques: 69.479" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="2695" y="720" width="200" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="80" value="Cantidad de bloques: 1.052.632" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="2910" y="900" width="190" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="81" value="Cantidad de bloques: 6.065.209" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#007FFF;" vertex="1" parent="1">
+                <mxCell id="81" value="Cantidad de bloques: 6.065.209" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#007FFF;" parent="1" vertex="1">
                     <mxGeometry x="1021" y="425.5" width="220" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="82" value="Cantidad de bloques: 6.096.552.605" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;" vertex="1" parent="1">
+                <mxCell id="82" value="Cantidad de bloques: 6.096.552.605" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;" parent="1" vertex="1">
                     <mxGeometry x="2925" y="564.75" width="250" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="83" value="Cantidad de bloques: 366" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;" vertex="1" parent="1">
+                <mxCell id="83" value="Cantidad de bloques: 366" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="2240" y="673.25" width="180" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="85" value="Cantidad de bloques: 549.513.760" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;" vertex="1" parent="1">
+                <mxCell id="85" value="Cantidad de bloques: 549.513.760" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;" parent="1" vertex="1">
                     <mxGeometry x="1370" y="136" width="240" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="86" value="&lt;div style=&quot;font-family: &amp;quot;Fira Code&amp;quot;, Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px;&quot;&gt;Cantidad de bloques: 185.944.268.794&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;labelBackgroundColor=none;" vertex="1" parent="1">
+                <mxCell id="86" value="&lt;div style=&quot;font-family: &amp;quot;Fira Code&amp;quot;, Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px;&quot;&gt;Cantidad de bloques: 185.944.268.794&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;labelBackgroundColor=none;" parent="1" vertex="1">
                     <mxGeometry x="2660" y="395.5" width="330" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="87" value="&lt;div style=&quot;font-family: &amp;quot;Fira Code&amp;quot;, Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px;&quot;&gt;Cantidad de bloques:&amp;nbsp;&lt;span style=&quot;&quot;&gt;8.518.537.877.485.251.947&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;labelBackgroundColor=none;" vertex="1" parent="1">
+                <mxCell id="87" value="&lt;div style=&quot;font-family: &amp;quot;Fira Code&amp;quot;, Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px;&quot;&gt;Cantidad de bloques:&amp;nbsp;&lt;span style=&quot;&quot;&gt;8.518.537.877.485.251.947&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;labelBackgroundColor=none;" parent="1" vertex="1">
                     <mxGeometry x="2215" y="-350" width="420" height="30" as="geometry"/>
                 </mxCell>
             </root>
