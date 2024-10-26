@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="ld3mcQhA281-zXJmEGoM" name="Page-1">
-        <mxGraphModel dx="1515" dy="2743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="-40" dy="1956" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -247,13 +247,13 @@
                     <mxGeometry x="2967.43" y="695" width="331.25" height="222" as="geometry"/>
                 </mxCell>
                 <mxCell id="72" value="Cantidad de bloques = 1.052.632" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;" parent="1" vertex="1">
-                    <mxGeometry x="1126" y="815" width="230" height="30" as="geometry"/>
+                    <mxGeometry x="1138.75" y="847.75" width="230" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="73" value="Cantidad de bloques:&amp;nbsp;&lt;span style=&quot;font-size: 14px;&quot;&gt;252.638&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontFamily=Helvetica;fontColor=#007FFF;labelBackgroundColor=none;" parent="1" vertex="1">
                     <mxGeometry x="1145" y="665" width="210" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="74" value="Cantidad de bloques: 2.000.000" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1449" y="840" width="220" height="30" as="geometry"/>
+                    <mxGeometry x="1456.25" y="853" width="220" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="75" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Cantidad de bloques:&amp;nbsp;&lt;span style=&quot;font-size: 14px;&quot;&gt;289.123&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=14;labelBackgroundColor=none;fontFamily=Helvetica;" parent="1" vertex="1">
                     <mxGeometry x="1466.25" y="624.75" width="210" height="30" as="geometry"/>

@@ -1,3 +1,5 @@
+# Cálculos de Proyecciones y Selecciones
+
 Tabla Billetera:
 
     - Proyección:
@@ -140,8 +142,10 @@ Tabla Asistente
             X = 2048 / (4+4) = 2048 / 8
             X = 256
 
-            Log(256)20.000.000 = 3,03
-
-        
+            Log(256)20.000.000 = 3,03        
 
         --> Costo Total: Log(256)20.000.000 + 69.474 = 3,03 + 69.474 = 69.478
+
+# Cálculos de Join
+
+    Para el cálculo de los Joins vamos a utilizar
