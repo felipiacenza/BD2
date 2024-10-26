@@ -15,14 +15,18 @@ Tabla Billetera:
         El 24% de los usuarios sería 5.200.000.
 
         --> Factor de bloqueo : igual al de la proyección, es decir 19
-
         Cantidad de bloques: 4.800.000 / 19 = 252.632
         
-        --> Factor de ramificación: 18 (por propiedad del índice B+).
-        Log(18)20.000.000 = 5.82
-        El costo de acceder al índice B+ para la tabla Billetera es aproximadamente 5.82 niveles.
+        --> Factor de ramificación: 19,70 (por propiedad del índice B+).
+            X = tamaño del bloque / (tamaño de la clave + tamaño del puntero del indice)
+            X = 2048 / (100+4) = 2048 / 104
+            X = 19,70
+
+        Log(19,70)20.000.000 = 5,64
+        El costo de acceder al índice B+ para la tabla Billetera es aproximadamente 5,64 niveles.
         
-        Costo total: log(18)(20.000.000) + 252.632 = 5.82 + 252.632 = 252.638 bloques
+        --> Costo total = X + cantidad de bloques = 5,64 + 252.632
+            Costo total = 252.638
 
 Tabla Usuario:
 
@@ -42,21 +46,25 @@ Tabla Usuario:
         Datos y suposiciones:
         - La app fue lanzada en noviembre de 2017. Suponemos que el 1ro del mes.
         - Suponemos que el ultimo mes posible es septiembre de 2024
-
-        --> Entre el primero de noviembre y el 30 de septimebre existen 2525
-
-        ---> En promedio, por día se registraron: 20.000.000 / 2525 = 7.921 usuarios por día
-
+        
+        Entre el primero de noviembre y el 30 de septimebre existen 2525
+        En promedio, por día se registraron: 20.000.000 / 2525 = 7.921 usuarios por día
         Por año, es decir, en el año 2023, se estima que se registraron: 7.921 * 365 días = 2.891.165
-
         Es decir, estimamos 2.891.165 tuplas para ese año.
 
         ---> Factor de bloqueo es igual a la proyección: 10
-        El costo de acceder al índice B+ para la tabla Billetera es aproximadamente 5.82 niveles.
 
-        Cantidad de bloques: 2.891.165 / 10 = 289.117   
+        Cantidad de bloques: 2.891.165 / 10 = 289.117
+        
+        --> Factor de ramificación: 19,70 (por propiedad del índice B+).
+            X = X = tamaño del bloque / (tamaño de la clave + tamaño del puntero del indice)
+            X = 2048 / (100+4) = 2048 / 104
+            X = 19,70
+        
+        Log(19,70)20.000.000 = 5,64
+        El costo de acceder al índice B+ para la tabla Billetera es aproximadamente 5,64 niveles.
 
-        Costo total: log(18)20.000.000 + 289.117 = 5.82 + 289.117 = 289.121 bloques
+        --> Costo total: log(18)20.000.000 + 289.117 = 5,64 + 289.117 = 289.123 bloques
 
     
     Tabla Pais:
@@ -72,21 +80,35 @@ Tabla Usuario:
         Condición: nombre_pais = 'Uruguay'
 
         --> Al ser una tabla de valores unicos, el valor Uruguay es el único presente.
-        Factor de ramificación: Para simplificar usaremos un factor típico de 10.
-        Por letra sabemos que tenemos 160 países.
-        Log(10)(160) = 2.29 niveles.
-        --> Cantidad de bloques: 1
+            Por lo tanto, la cantidad de bloques va a ser 1
+            Cantidad de bloques: 1
+
+        --> Factor de ramificación: 256 (por propiedad del índice B+).
+            X = tamaño del bloque / (tamaño de la clave + tamaño del puntero del indice)
+            X = 2048 / (4+4) = 2048 / 8
+            X = 256
         
-        Costo Total: Log(10)(160) + 1 = 2.29 + 1 = 3,2 bloques
+        Por letra sabemos que tenemos 160 países.
+
+        Log(256)(160) = 0,91 = 1
+        
+        --> Costo Total: Log(10)(160) + 1 = 1 + 1 = 2 bloques
 
 Tabla Idioma:
     - Selección
         Condición: nombre = 'Ingles'
 
         --> Al ser una tabla de valores unicos, el valor Inglés es el único presente.
-        --> Cantidad de bloques: 1
+            Cantidad de bloques: 1
 
-        Costo Total: log(10)(50) + 1 = 1,699 + 1 = 2,7 bloques
+        --> Factor de ramificación: 256 (por propiedad del índice B+).
+            X = tamaño del bloque / (tamaño de la clave + tamaño del puntero del indice)
+            X = 2048 / (4+4) = 2048 / 8
+            X = 256
+
+            Log(256)(50) = 0,70 = 1
+
+        --> Costo Total: log(256)(50) + 1 = 1 + 1 = 2 bloques
 
 Tabla Asistente
     - Proyección:
@@ -105,14 +127,21 @@ Tabla Asistente
         Por letra, sabemos que el 20% de los asistentes son de tipo (rol) Tutor.
         Dentro de los tutores, los subroles posibles son: Apoyo educativo, Enseñanza de Idiomas o Preparación de Exámenes. Si las distribuciónes son unifomres y proporcionales, podemos afirmar que el 33,3% son Tutores con el subrol 'Enseñanza de Idiomas'
 
-        --> El 20% de los asistentes: 20.000.000 * 0,20 = 4.000.000
+        El 20% de los asistentes: 20.000.000 * 0,20 = 4.000.000
 
-        --> De esos 4.000.000 de Asistentes tutores, el 33% son de sub-rol 'Enseñanza de Idiomas': 4.000.000 * ' 0,33 = 1.320.000
+        De esos 4.000.000 de Asistentes tutores, el 33% son de sub-rol 'Enseñanza de Idiomas': 4.000.000 * ' 0,33 = 1.320.000
 
         --> Factor de bloqueo: igual al de la proyección: 19
-        --> Factor de ramificación: 18 (por propiedad del índice B+).
 
         --> Cantidad de bloques: 1.320.000 / 19 = 69.474
+        
+        --> Factor de ramificación: 256 (por propiedad del índice B+).
+            X = tamaño del bloque / (tamaño de la clave + tamaño del puntero del indice)
+            X = 2048 / (4+4) = 2048 / 8
+            X = 256
 
-        Costo Total: Log(18)(1.320.000) + 69.474 = 4,876 + 69.474 = 69,479
+            Log(256)20.000.000 = 3,03
 
+        
+
+        --> Costo Total: Log(256)20.000.000 + 69.474 = 3,03 + 69.474 = 69.478
