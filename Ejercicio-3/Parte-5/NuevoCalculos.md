@@ -148,4 +148,92 @@ Tabla Asistente
 
 # Cálculos de Join
 
-    Para el cálculo de los Joins vamos a utilizar
+    Para el cálculo de los Joins vamos a utilizar diferentes tipos de Joins
+
+    Join Usuario y Billetera:
+    
+    Para realizar este Join vamos a realizar un Hash Join
+    --> Fórmula: 2 * (bR + bS) * (⌈log(M-1)(bS)⌉ - 1) + bR + bS
+
+        2 * (2.000.000 + 1.052.632) * (log(14-1)(1.052.632) - 1) + 2.000.000 + 1.052.000
+
+        2 * (2.000.000 + 1.052.632) * (4−1) + 2.000.000 + 1.052.632
+
+        Costo final: 21.368.424 bloques
+
+    Join del Join Usuario y Billetera y Pais
+
+    Para realizar este Join vamos a realizar un Hash Join
+    --> Fórmula: 2 * (bR + bS) * (⌈log(M-1)(bS)⌉ - 1) + bR + bS
+
+        2 * (21.368.424 + 2) * (1 - 1) + 21.368.424 + 2
+
+        0 + 21.368.424 + 2
+
+        Costo final: 21.358.424
+
+    Join del Maneja y Idioma
+    Para realizar este Join vamos a realizar un Hash Join
+
+    --> Fórmula: 2 * (bR + bS) * (⌈log(M-1)(bS)⌉ - 1) + bR + bS
+
+        2 * (4375 + 2) * (1 - 1) + 4375 + 2
+
+        0 + 4375 + 2
+
+        Costo final: 4377 bloques
+
+    Join Asistente y Tiene
+    Para realizar este Join vamos a realizar un Hash Join
+
+    --> Fórmula: 2 * (bR + bS) * (⌈log(M-1)(bS)⌉ - 1) + bR + bS
+
+    2 * (69.478 + 1.052.632) * (4 − 1)+ 69.478 + 1.052.632
+
+    2 * 1.122.110 * 3 + 1.122.110
+
+    6.732.660 + 1.122.110
+
+    Costo final: 7.854.770 bloques
+
+
+    Join entre el Join de Asistente y Tiene y el Join de Maneja e Idioma
+
+    Para realizar este Join vamos a realizar un Hash Join
+
+    --> Fórmula: 2 * (bR + bS) * (⌈log(M-1)(bS)⌉ - 1) + bR + bS
+
+    2 * (7.854.770 + 4.377) * (3 − 1) + 7.854.770 + 4.377
+
+    2 * 7.859.147 * 2 + 7.854.770 + 4.377
+
+    31.436.588 + 7.859.147
+
+    Costo final: 39.295.735 bloques
+
+    Join Final:
+
+    Para realizar este Join vamos a realizar un Hash Join
+
+    --> Fórmula: 2 * (bR + bS) * (⌈log(M-1)(bS)⌉ - 1) + bR + bS
+
+    2 * (21.368.424 + 39.295.735) * (4−1) + 21.368.424 + 39.295.735
+
+    2 * 60.664.159 * 3 + 21.368.424 + 39.295.735
+
+    364.984.954 + 21.368.424 + 39.295.735
+
+    181.992.477 + 60.664.159
+
+    Coste final: 425.649.113 bloques
+
+
+# Proyección final
+
+    - Proyección:
+        nombre = 100 bytes
+        Tamaño total: 100 bytes
+
+        --> Factor de bloqueo: 2048 / 100 = 20
+
+        Cantidad de bloques 425.649.113 / 20 = 21.282.456 bloques
