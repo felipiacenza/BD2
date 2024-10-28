@@ -1,4 +1,5 @@
-SELECT u.nombre
+EXPLAIN PLAN FOR
+SELECT /*+ USE_HASH(u b p t av m i) */ u.nombre
 FROM Usuario u
 JOIN Billetera b ON u.email = b.email
 JOIN Pais p ON u.id_pais = p.id_pais
@@ -12,3 +13,5 @@ WHERE p.nombre_pais = 'Uruguay'
     AND av.rol = 'Tutor'
     AND av.subrol = 'Enseñanza de Idiomas'
     AND i.id_idioma = 'Inglés';
+    
+    SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY());
