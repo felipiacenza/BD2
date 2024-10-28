@@ -15,19 +15,16 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON billetera TO admin;
 3. Privilegios para los Usuarios Finales
 Los usuarios finales solo pueden leer y actualizar su propia contraseña, género y teléfono. Esto puede lograrse con una combinación de vistas o restricciones condicionales en las consultas, pero aquí te doy un ejemplo de permisos básicos para las columnas específicas:
 
-GRANT SELECT (email, nombre, apellido, genero, telefono) ON usuarios TO usuario_final;
-GRANT UPDATE (password, genero, telefono) ON usuarios TO usuario_final;
-
-Si fuese con vistas:
-
 CREATE VIEW vista_usuario_final AS
 SELECT email, nombre, apellido, genero, telefono
 FROM usuarios
-WHERE email = SESSION_USER;  -- Asumiendo que el email del usuario se corresponde con la sesión
+WHERE email = SESSION_USER;
 
-NOTA: Preguntarle bien al profe como sería la vista
+GRANT UPDATE (password, genero, telefono) ON usuarios TO usuario_final;
+GRANT SELECT ON vista_usuario_final TO usuario_final;
 
-4. Privilegios para los Diseñadores de Contenido
+
+1. Privilegios para los Diseñadores de Contenido
 Los diseñadores de contenido tienen permisos para crear y actualizar apariencias y vestimentas. Se asume que estas están en una tabla llamada apariencias:
 
 GRANT SELECT, INSERT, UPDATE ON apariencias TO disenador_contenido;

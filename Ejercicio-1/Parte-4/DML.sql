@@ -298,3 +298,79 @@ INSERT INTO A_Apa (id_avatar, id_apariencia) VALUES (5, 5);
 INSERT INTO A_Apa (id_avatar, id_apariencia) VALUES (6, 6);
 INSERT INTO A_Apa (id_avatar, id_apariencia) VALUES (7, 7);
 INSERT INTO A_Apa (id_avatar, id_apariencia) VALUES (8, 7);
+
+-- Datos de prueba errones (hacen saltar los triggers y las constraints)
+
+-- Datos para Usuario
+INSERT INTO Usuario (email, nombre, pass, fecha_nac, rango_edad_id, genero, telefono, id_suscripcion, id_pais)
+VALUES ('juan.perez1@gmail.com', 'Juan Pérez1', 'password123', TO_DATE('15/08/1990', 'DD/MM/YYYY'), 2, 'masculino', '099693214', 2, 1);
+-- este insert salta la restricción unica debido a que el teléfono no es único y se encuentra repetido.
+
+INSERT INTO Usuario (email, nombre, pass, fecha_nac, rango_edad_id, genero, telefono, id_suscripcion, id_pais)
+VALUES ('juan.perez2@gmail.com', 'Juan Pérez2', 'password123', TO_DATE('15/08/1990', 'DD/MM/YYYY'), 6, 'masculino', '099693233', 2, 1);
+-- este insert salta el trigger TRG_CHECK_FECHA_NAC debido a que el rango de edad asociado es el 6 ('65 o más'), siendo incoherente con la fecha de nacimiento
+
+INSERT INTO Usuario (email, nombre, pass, fecha_nac, rango_edad_id, genero, telefono, id_suscripcion, id_pais)
+VALUES ('juan.perez2@gmail.com', 'Juan Pérez2', 'password123', TO_DATE('15/08/1990', 'DD/MM/YYYY'), 2, 'singenero', '099693233', 2, 1);
+
+INSERT INTO AsistenteVirtual (id_asistente, nombre, genero, historia, rol, subrol)
+VALUES (9, 'Alexa', 'femenino', 'Un asistente virtual amigable y eficiente.', 'Profe', 'Apoyo educativo');
+-- este insert salta el trigger TRG_CHECK_ROL_SUBROL debido a que el rol asociado no es permitido
+
+INSERT INTO AsistenteVirtual (id_asistente, nombre, genero, historia, rol, subrol)
+VALUES (10, 'Jarvis', 'masculino', 'Un asistente virtual altamente inteligente.', 'Tutor', 'Planificación');
+-- este insert salta el trigger TRG_CHECK_ROL_SUBROL debido a que el subrol asociado no es permitido para este rol
+
+INSERT INTO AsistenteVirtual (id_asistente, nombre, genero, historia, rol, subrol)
+VALUES (11, 'Cortana', 'femenino', 'Un asistente virtual con gran capacidad de aprendizaje.', 'Coach', 'Amigo');
+-- este insert salta el trigger TRG_CHECK_ROL_SUBROL debido a que el subrol asociado no es permitido para este rol
+
+INSERT INTO Idioma (id_idioma, nombre) VALUES (1, 'Mandarín');
+-- este insert salta la restricción unica sobre el atributo id_idioma
+
+INSERT INTO Voz (tipo, tono) VALUES ('neutro', 'alegre');
+-- este insert salta la restricción de check sobre el atributo tipo
+
+INSERT INTO Voz (tipo, tono) VALUES ('femenina', 'triste');
+-- este insert salta la restricción de check sobre el atributo tono
+
+INSERT INTO RasgoPersonalidad (id_rasgo, imagen, nombre) VALUES (8, 'imagen8.png', 'triste');
+-- este insert salta la restricción unica sobre el atributo nombre
+
+INSERT INTO Apariencia (id_apariencia, descripcion, tipo, imagen, precio_gemas, precio_monedas)
+VALUES (9, 'Nariz chata', 'nariz', 'cabello.png', 50, 500);
+-- este insert salta la restricción de check sobre el atributo tipo
+
+INSERT INTO Ropa (id_ropa, descripcion, tipo, precio_gemas, precio_monedas)
+VALUES (9, 'Camisa casual', 'casual', 40, 400);
+-- este insert salta la restricción de check sobre el atributo tipo
+
+INSERT INTO Usuario (email, nombre, pass, fecha_nac, rango_edad_id, genero, telefono, id_suscripcion, id_pais)
+VALUES ('juan.perez1@gmail.com', 'Juan Pérez1', 'password123', TO_DATE('15/08/1990', 'DD/MM/YYYY'), 2, 'masculino', '099696666', 2, 1);
+-- usuario verificado para inserts que requieren de un usuario
+
+INSERT INTO Billetera (id_billetera, email, cant_gemas, cant_monedas) VALUES (9, 'juan.perez1@gmail.com', -100, 100);
+-- este insert salta la restricción de check sobre los atributos cant_gemas y cant_monedas
+
+INSERT INTO Billetera (id_billetera, email, cant_gemas, cant_monedas) VALUES (9, 'juan.perez1@gmail.com', 100, -100);
+-- este insert salta la restricción de check sobre los atributos cant_gemas y cant_monedas
+
+INSERT INTO Paquete (id_paquete, tipo, cantidad, importe, descuento)
+VALUES (7, 'gemas', -100, 400, 0.1);
+-- este insert salta la restricción de check sobre el atributo cantidad
+
+INSERT INTO Paquete (id_paquete, tipo, cantidad, importe, descuento)
+VALUES (8, 'euros', 1000, 1000, 0.15);
+-- este insert salta la restricción de check sobre el atributo tipo
+
+INSERT INTO Paquete (id_paquete, tipo, cantidad, importe, descuento)
+VALUES (9, 'gemas', 1000, -1000, 0.15);
+-- este insert salta la restricción de check sobre el atributo importe
+
+INSERT INTO Compra (id_compra, email, id_paquete, fecha, hora, metodo_pago)
+VALUES (7, 'juan.perez1@gmail.com', 1, TO_DATE('22/10/2023', 'DD/MM/YYYY'), TO_TIMESTAMP('15:00:00', 'HH24:MI:SS'), 'tarjeta de debito');
+-- este insert salta la restricción de check sobre el atributo metodo_pago
+
+INSERT INTO Compra (id_compra, email, id_paquete, fecha, hora, metodo_pago)
+VALUES (8, 'juan.perez1@gmail.com', 1, TO_DATE('22/10/2025', 'DD/MM/YYYY'), TO_TIMESTAMP('15:00:00', 'HH24:MI:SS'), 'tarjeta de credito');
+-- este insert salta la restricción de check sobre la fecha
