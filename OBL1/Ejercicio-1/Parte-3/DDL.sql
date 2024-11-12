@@ -279,7 +279,6 @@ BEGIN
 END;
 /
 
-
 CREATE OR REPLACE TRIGGER trg_check_rol_suscripcion
 BEFORE INSERT OR UPDATE ON AsistenteVirtual
 FOR EACH ROW
@@ -311,8 +310,6 @@ BEGIN
 END;
 /
 
-
-
 CREATE OR REPLACE TRIGGER trg_check_idioma_subrol
 BEFORE INSERT OR UPDATE ON AsistenteVirtual
 FOR EACH ROW
@@ -343,7 +340,6 @@ BEGIN
     END IF;
 END;
 /
-
 
 CREATE OR REPLACE TRIGGER trg_check_fecha_nac_valid
 BEFORE INSERT OR UPDATE ON Usuario
