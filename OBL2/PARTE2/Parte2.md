@@ -10,11 +10,11 @@ MongoDB prioriza la desnormlaización y embedido de datos, por lo tanto, parte d
 - AsistenteVirtual --> sí
 - Idioma --> sí
 - Voz --> no, se incluye como un campo en Asistente virtual
-- Avatar --> sí
+- Avatar --> no, se incluye como un campo en Asistente Virtual
 - RasgoPersonalidad --> no, se incluye como un campo en Asistente virtual
-- Interes --> no, se incluye como un array en Asistente Virtual
-- Apariencia --> no, se incluye como un array en Asistente Virtual
-- Ropa --> no, se incluye como un array en Asistente Virtual
+- Interes --> no, se incluye como un array en Avatar
+- Apariencia --> no, se incluye como un array en Avatar
+- Ropa --> no, se incluye como un array en Avatar
 - Paquete --> sí
 - Aplicacion --> sí
 
@@ -25,8 +25,8 @@ MongoDB prioriza la desnormlaización y embedido de datos, por lo tanto, parte d
 - compra --> sí
 - maneja --> no, se incluye como un array en Asistente Virtual
 - aprende --> no, se incluye como un array en Usuario
-- a_ropa --> no, se incluye como un array en Asistente Virtual
-- a_inte --> no, se incluye como un array en Asistente Virtual
-- a_rasgo --> no, se incluye como un array en Asistente Virtual
-- a_apa --> no, se incluye como un array en Asistente Virtual
+- a_ropa --> no, se incluye como un array en Avatar
+- a_inte --> no, se incluye como un array en Avatar
+- a_rasgo --> no, se incluye como un array en Avatar
+- a_apa --> no, se incluye como un array en Avatar
 - tiene --> no, se incluye como una referencia al Asistente Virtual en Usuario
