@@ -299,6 +299,7 @@ INSERT INTO A_Apa (id_avatar, id_apariencia) VALUES (6, 6);
 INSERT INTO A_Apa (id_avatar, id_apariencia) VALUES (7, 7);
 INSERT INTO A_Apa (id_avatar, id_apariencia) VALUES (8, 7);
 
+
 -- Datos de prueba errones (hacen saltar los triggers y las constraints)
 
 -- Datos para Usuario
