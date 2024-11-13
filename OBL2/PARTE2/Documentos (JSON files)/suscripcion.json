@@ -1,0 +1,18 @@
+[
+    {
+        "precio": 0.0,
+        "tipo": "gratis"
+    },
+    {
+        "precio": 9.99,
+        "tipo": "mensual"
+    },
+    {
+        "precio": 99.99,
+        "tipo": "anual"
+    },
+    {
+        "precio": 299.99,
+        "tipo": "de por vida"
+    }
+]

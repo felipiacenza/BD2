@@ -28,10 +28,7 @@ db.createCollection('paquete', {
                     description: 'Debe ser un número decimal mayor o igual a 0 y obligatorio'
                 },
                 descuento: {
-                    bsonType: [
-                        'double',
-                        'null'
-                    ],
+                    bsonType: 'double',
                     minimum: 0,
                     description: 'Debe ser un número decimal mayor o igual a 0 o puede ser nulo'
                 }

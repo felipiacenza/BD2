@@ -1,0 +1,74 @@
+[
+    {
+        "_id": {
+            "$oid": "673522ad9039535afaae0f29"
+        },
+        "tipo": "gemas",
+        "cantidad": 100,
+        "importe": 10,
+        "descuento": 0
+    },
+    {
+        "_id": {
+            "$oid": "673522ad9039535afaae0f2a"
+        },
+        "tipo": "gemas",
+        "cantidad": 500,
+        "importe": 40,
+        "descuento": 5
+    },
+    {
+        "_id": {
+            "$oid": "673522ad9039535afaae0f2b"
+        },
+        "tipo": "gemas",
+        "cantidad": 1000,
+        "importe": 75,
+        "descuento": 10
+    },
+    {
+        "_id": {
+            "$oid": "673522ad9039535afaae0f2c"
+        },
+        "tipo": "monedas",
+        "cantidad": 1000,
+        "importe": 5,
+        "descuento": 0
+    },
+    {
+        "_id": {
+            "$oid": "673522ad9039535afaae0f2d"
+        },
+        "tipo": "monedas",
+        "cantidad": 5000,
+        "importe": 20,
+        "descuento": 2
+    },
+    {
+        "_id": {
+            "$oid": "673522ad9039535afaae0f2e"
+        },
+        "tipo": "monedas",
+        "cantidad": 10000,
+        "importe": 35,
+        "descuento": 5
+    },
+    {
+        "_id": {
+            "$oid": "673522ad9039535afaae0f2f"
+        },
+        "tipo": "gemas",
+        "cantidad": 2000,
+        "importe": 100,
+        "descuento": 15
+    },
+    {
+        "_id": {
+            "$oid": "673522ad9039535afaae0f30"
+        },
+        "tipo": "monedas",
+        "cantidad": 20000,
+        "importe": 60,
+        "descuento": 10
+    }
+]
