@@ -3,7 +3,6 @@ db.createCollection('asistenteVirtual', {
     $jsonSchema: {
       bsonType: 'object',
       required: [
-        'id_asistente',
         'nombre',
         'idiomas_manejados',
         'voz',
@@ -11,10 +10,6 @@ db.createCollection('asistenteVirtual', {
         'rasgoPersonalidad'
       ],
       properties: {
-        id_asistente: {
-          bsonType: 'int',
-          description: 'Debe ser un entero único y obligatorio'
-        },
         nombre: {
           bsonType: 'string',
           description: 'Debe ser una cadena no nula y obligatoria'

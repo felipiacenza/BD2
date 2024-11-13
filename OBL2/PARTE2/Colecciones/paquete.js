@@ -1,19 +1,14 @@
-db.createCollection('pais', {
+db.createCollection('paquete', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
             required: [
-                'id_paquete',
                 'tipo',
                 'cantidad',
                 'importe',
                 'descuento'
             ],
             properties: {
-                id_paquete: {
-                    bsonType: 'int',
-                    description: 'Debe ser un entero único y obligatorio'
-                },
                 tipo: {
                     bsonType: 'string',
                     'enum': [

@@ -1,17 +1,12 @@
-db.createCollection('pais', {
+db.createCollection('suscripcion', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
             required: [
-                'id_suscripcion',
                 'precio',
                 'tipo'
             ],
             properties: {
-                id_suscripcion: {
-                    bsonType: 'int',
-                    description: 'Debe ser un entero único y obligatorio'
-                },
                 precio: {
                     bsonType: 'double',
                     minimum: 0,

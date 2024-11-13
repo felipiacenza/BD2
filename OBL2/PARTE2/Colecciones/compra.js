@@ -3,7 +3,6 @@ db.createCollection('compra', {
         $jsonSchema: {
             bsonType: 'object',
             required: [
-                'id_compra',
                 'email',
                 'id_paquete',
                 'fecha',
@@ -11,10 +10,6 @@ db.createCollection('compra', {
                 'metodo_pago'
             ],
             properties: {
-                id_compra: {
-                    bsonType: 'int',
-                    description: 'Debe ser un entero único y obligatorio'
-                },
                 email: {
                     bsonType: 'string',
                     pattern: '^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$',
