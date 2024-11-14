@@ -16,8 +16,8 @@ db.createCollection('compra', {
                     description: 'Debe ser un email válido y obligatorio'
                 },
                 id_paquete: {
-                    bsonType: 'int',
-                    description: 'Debe ser un entero que referencia a un paquete y obligatorio'
+                    bsonType: 'objectId',
+                    description: 'Debe ser un ObjectId que referencia a un paquete y obligatorio'
                 },
                 fecha: {
                     bsonType: 'date',

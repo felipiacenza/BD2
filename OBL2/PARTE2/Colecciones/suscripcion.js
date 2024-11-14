@@ -8,7 +8,7 @@ db.createCollection('suscripcion', {
             ],
             properties: {
                 precio: {
-                    bsonType: 'int',
+                    bsonType: 'double',
                     minimum: 0,
                     description: 'Debe ser un número decimal mayor o igual a 0 y obligatorio'
                 },

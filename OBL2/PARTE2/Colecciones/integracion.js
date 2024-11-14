@@ -5,8 +5,8 @@ db.createCollection('integracion', {
             required: [
                 'email',
                 'id_app',
-                'fecha_confrimacion',
-                'hora_confrimacion'
+                'fecha_confirmacion',
+                'hora_confirmacion'
             ],
             properties: {
                 email: {
@@ -15,8 +15,8 @@ db.createCollection('integracion', {
                     description: 'Debe ser un email válido y obligatorio'
                 },
                 id_app: {
-                    bsonType: 'int',
-                    description: 'Debe ser un entero que referencia a una aplicación y obligatorio'
+                    bsonType: 'objectId',
+                    description: 'Debe ser un ObjectId que referencia a una aplicación y obligatorio'
                 },
                 fecha_confirmacion: {
                     bsonType: 'date',

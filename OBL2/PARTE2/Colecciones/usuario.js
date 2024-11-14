@@ -41,7 +41,7 @@ db.createCollection('usuario', {
                 },
                 rango_edad: {
                     bsonType: 'string',
-                    'enum': [
+                    enum: [
                         '18-24',
                         '25-34',
                         '35-44',
@@ -53,35 +53,35 @@ db.createCollection('usuario', {
                 },
                 genero: {
                     bsonType: 'string',
-                    'enum': [
+                    enum: [
                         'femenino',
                         'masculino',
                         'no binario'
                     ],
-                    description: 'Debe ser una cadena opcional con valores \'femenino\', \'masculino\' o \'no binario\''
+                    description: 'Debe ser una cadena opcional con valores "femenino", "masculino" o "no binario"'
                 },
                 telefono: {
                     bsonType: 'string',
                     description: 'Debe ser una cadena única y opcional'
                 },
                 id_suscripcion: {
-                    bsonType: 'int',
-                    description: 'Debe ser un entero opcional que referencia a la colección Suscripción'
+                    bsonType: 'objectId',
+                    description: 'Debe ser un ObjectId que referencia a la colección Suscripción'
                 },
                 id_pais: {
-                    bsonType: 'int',
-                    description: 'Debe ser un entero obligatorio que referencia a la colección País'
+                    bsonType: 'objectId',
+                    description: 'Debe ser un ObjectId obligatorio que referencia a la colección País'
                 },
                 id_asistente: {
-                    bsonType: 'int',
-                    description: 'Debe ser un entero que referencia al asistente que maneja el usuario'
+                    bsonType: 'objectId',
+                    description: 'Debe ser un ObjectId que referencia al asistente que maneja el usuario'
                 },
                 idiomas_aprendidos: {
                     bsonType: 'array',
                     items: {
-                        bsonType: 'int'
+                        bsonType: 'objectId'
                     },
-                    description: 'Debe ser un array de enteros que representan los idiomas aprendidos por el usuario'
+                    description: 'Debe ser un array de ObjectId que representan los idiomas aprendidos por el usuario'
                 },
                 billetera: {
                     bsonType: 'object',
@@ -92,8 +92,8 @@ db.createCollection('usuario', {
                     ],
                     properties: {
                         id_billetera: {
-                            bsonType: 'int',
-                            description: 'Debe ser un entero único y obligatorio'
+                            bsonType: 'objectId',
+                            description: 'Debe ser un ObjectId único y obligatorio'
                         },
                         cant_gemas: {
                             bsonType: 'int',

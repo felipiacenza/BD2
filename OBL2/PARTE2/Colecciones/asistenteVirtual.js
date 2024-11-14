@@ -16,12 +16,12 @@ db.createCollection('asistenteVirtual', {
         },
         genero: {
           bsonType: 'string',
-          'enum': [
+          enum: [
             'femenino',
             'masculino',
             'no binario'
           ],
-          description: 'Debe ser una cadena opcional con valores \'femenino\', \'masculino\' o \'no binario\''
+          description: 'Debe ser una cadena opcional con valores "femenino", "masculino" o "no binario"'
         },
         historia: {
           bsonType: 'string',
@@ -38,13 +38,13 @@ db.createCollection('asistenteVirtual', {
         idiomas_manejados: {
           bsonType: 'array',
           items: {
-            bsonType: 'int'
+            bsonType: 'objectId'
           },
-          description: 'Debe ser un array de enteros que representen los idiomas manejados'
+          description: 'Debe ser un array de ObjectId que referencien los idiomas manejados'
         },
         rasgoPersonalidad: {
           bsonType: 'string',
-          'enum': [
+          enum: [
             'seguro',
             'tímido',
             'energético',
@@ -64,15 +64,15 @@ db.createCollection('asistenteVirtual', {
           properties: {
             tipo: {
               bsonType: 'string',
-              'enum': [
+              enum: [
                 'femenina',
                 'masculina'
               ],
-              description: 'Debe ser \'femenina\' o \'masculina\''
+              description: 'Debe ser "femenina" o "masculina"'
             },
             tono: {
               bsonType: 'string',
-              'enum': [
+              enum: [
                 'alegre',
                 'calmo',
                 'seguro',
@@ -94,9 +94,9 @@ db.createCollection('asistenteVirtual', {
             intereses: {
               bsonType: 'array',
               items: {
-                bsonType: 'int'
+                bsonType: 'string'
               },
-              description: 'Debe ser un array de enteros que representen los intereses'
+              description: 'Debe ser un array de strings que representen los intereses'
             },
             apariencia: {
               bsonType: 'array',
@@ -116,7 +116,7 @@ db.createCollection('asistenteVirtual', {
                     description: 'Debe ser una cadena que describe la apariencia'
                   },
                   imagen: {
-                    bsonType: 'string',
+                    bsonType: ['string', 'null'],
                     description: 'Debe ser una cadena opcional con la URL de la imagen'
                   }
                 }
