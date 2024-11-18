@@ -15,7 +15,8 @@ db.createCollection('usuario', {
                 'id_pais',
                 'billetera',
                 'id_asistente',
-                'idiomas_aprendidos'
+                'idiomas_aprendidos',
+                'progreso_aprendizaje' // Nuevo campo
             ],
             properties: {
                 email: {
@@ -104,6 +105,48 @@ db.createCollection('usuario', {
                             bsonType: 'int',
                             minimum: 0,
                             description: 'Debe ser un entero no negativo'
+                        }
+                    }
+                },
+                progreso_aprendizaje: { // Nuevo campo embebido
+                    bsonType: 'object',
+                    required: ['sesiones_completadas', 'niveles_alcanzados', 'logros'],
+                    properties: {
+                        sesiones_completadas: {
+                            bsonType: 'int',
+                            minimum: 0,
+                            description: 'Debe ser un entero no negativo que representa el número de sesiones completadas'
+                        },
+                        niveles_alcanzados: {
+                            bsonType: 'array',
+                            items: {
+                                bsonType: 'string',
+                                enum: ['Básico', 'Intermedio', 'Avanzado']
+                            },
+                            description: 'Debe ser un array que representa los niveles alcanzados'
+                        },
+                        logros: {
+                            bsonType: 'array',
+                            items: {
+                                bsonType: 'object',
+                                required: ['nombre', 'fecha_obtencion', 'nivel_dominio'],
+                                properties: {
+                                    nombre: {
+                                        bsonType: 'string',
+                                        description: 'Debe ser un string que describe el logro o certificación'
+                                    },
+                                    fecha_obtencion: {
+                                        bsonType: 'date',
+                                        description: 'Debe ser una fecha válida que indica cuándo se obtuvo el logro'
+                                    },
+                                    nivel_dominio: {
+                                        bsonType: 'string',
+                                        enum: ['Básico', 'Intermedio', 'Avanzado'],
+                                        description: 'Debe ser un string que indica el nivel alcanzado'
+                                    }
+                                }
+                            },
+                            description: 'Debe ser un array de objetos que describen los logros o certificaciones'
                         }
                     }
                 }
