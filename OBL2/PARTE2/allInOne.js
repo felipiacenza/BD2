@@ -1,4 +1,4 @@
-// Colecciones
+// Colecciones:
 
 db.createCollection('aplicacion', {
     validator: {
@@ -380,7 +380,7 @@ db.createCollection('usuario', {
                 'billetera',
                 'id_asistente',
                 'idiomas_aprendidos',
-                'progreso_aprendizaje' // Nuevo campo
+                'progreso_aprendizaje'
             ],
             properties: {
                 email: {
@@ -472,7 +472,7 @@ db.createCollection('usuario', {
                         }
                     }
                 },
-                progreso_aprendizaje: { // Nuevo campo embebido
+                progreso_aprendizaje: {
                     bsonType: 'object',
                     required: ['sesiones_completadas', 'niveles_alcanzados', 'logros'],
                     properties: {
@@ -519,7 +519,7 @@ db.createCollection('usuario', {
     }
 });
 
-// Documentos
+// Documentos:
 
 db.aplicacion.insertMany([
     {
@@ -607,8 +607,8 @@ db.asistenteVirtual.insertMany([
         "rol": "Asistente personal",
         "subrol": "Organización",
         "idiomas_manejados": [
-            ObjectId("67351df19039535afaae0e83"), // Español
-            ObjectId("67351df19039535afaae0e84")  // Inglés
+            ObjectId("67351df19039535afaae0e83"),
+            ObjectId("67351df19039535afaae0e84")
         ],
         "rasgoPersonalidad": "práctico",
         "voz": {
@@ -652,8 +652,8 @@ db.asistenteVirtual.insertMany([
         "rol": "Entrenador personal",
         "subrol": "Fitness",
         "idiomas_manejados": [
-            ObjectId("67351df19039535afaae0e84"), // Inglés
-            ObjectId("67351df19039535afaae0e85")  // Portugués
+            ObjectId("67351df19039535afaae0e84"),
+            ObjectId("67351df19039535afaae0e85")
         ],
         "rasgoPersonalidad": "energético",
         "voz": {
@@ -697,8 +697,8 @@ db.asistenteVirtual.insertMany([
         "rol": "Mentor",
         "subrol": "Arte",
         "idiomas_manejados": [
-            ObjectId("67351df19039535afaae0e84"), // Inglés
-            ObjectId("67351df19039535afaae0e86")  // Francés
+            ObjectId("67351df19039535afaae0e84"),
+            ObjectId("67351df19039535afaae0e86")
         ],
         "rasgoPersonalidad": "artístico",
         "voz": {
@@ -742,8 +742,8 @@ db.asistenteVirtual.insertMany([
         "rol": "Guía",
         "subrol": "Turismo",
         "idiomas_manejados": [
-            ObjectId("67351df19039535afaae0e83"), // Español
-            ObjectId("67351df19039535afaae0e87")  // Alemán
+            ObjectId("67351df19039535afaae0e83"),
+            ObjectId("67351df19039535afaae0e87")
         ],
         "rasgoPersonalidad": "soñador",
         "voz": {
@@ -787,8 +787,8 @@ db.asistenteVirtual.insertMany([
         "rol": "Analista",
         "subrol": "Datos",
         "idiomas_manejados": [
-            ObjectId("67351df19039535afaae0e84"), // Inglés
-            ObjectId("67351df19039535afaae0e8c")  // Ruso
+            ObjectId("67351df19039535afaae0e84"),
+            ObjectId("67351df19039535afaae0e8c")
         ],
         "rasgoPersonalidad": "lógico",
         "voz": {
@@ -834,11 +834,11 @@ db.asistenteVirtual.insertOne({
     "rol": "Educadora",
     "subrol": "Idiomas",
     "idiomas_manejados": [
-        ObjectId("67351df19039535afaae0e83"), // Español
-        ObjectId("67351df19039535afaae0e84"), // Inglés
-        ObjectId("67351df19039535afaae0e86")  // Francés
+        ObjectId("67351df19039535afaae0e83"),
+        ObjectId("67351df19039535afaae0e84"),
+        ObjectId("67351df19039535afaae0e86")
     ],
-    "rasgoPersonalidad": "soñador", // Cambiado de "optimista" a "soñador"
+    "rasgoPersonalidad": "soñador",
     "voz": {
         "tipo": "femenina",
         "tono": "alegre"
@@ -882,8 +882,8 @@ db.asistenteVirtual.insertMany([
         "rol": "Mentora",
         "subrol": "Arte y diseño",
         "idiomas_manejados": [
-            ObjectId("67351df19039535afaae0e84"), // Inglés
-            ObjectId("67351df19039535afaae0e85")  // Portugués
+            ObjectId("67351df19039535afaae0e84"),
+            ObjectId("67351df19039535afaae0e85")
         ],
         "rasgoPersonalidad": "artístico",
         "voz": {
@@ -927,8 +927,8 @@ db.asistenteVirtual.insertMany([
         "rol": "Analista",
         "subrol": "Ciencia de datos",
         "idiomas_manejados": [
-            ObjectId("67351df19039535afaae0e84"), // Inglés
-            ObjectId("67351df19039535afaae0e8c")  // Ruso
+            ObjectId("67351df19039535afaae0e84"),
+            ObjectId("67351df19039535afaae0e8c")
         ],
         "rasgoPersonalidad": "lógico",
         "voz": {
@@ -972,8 +972,8 @@ db.asistenteVirtual.insertMany([
         "rol": "Entrenadora personal",
         "subrol": "Salud y fitness",
         "idiomas_manejados": [
-            ObjectId("67351df19039535afaae0e83"), // Español
-            ObjectId("67351df19039535afaae0e84")  // Inglés
+            ObjectId("67351df19039535afaae0e83"),
+            ObjectId("67351df19039535afaae0e84")
         ],
         "rasgoPersonalidad": "energético",
         "voz": {
@@ -1017,8 +1017,8 @@ db.asistenteVirtual.insertMany([
         "rol": "Guía",
         "subrol": "Historia y cultura",
         "idiomas_manejados": [
-            ObjectId("67351df19039535afaae0e83"), // Español
-            ObjectId("67351df19039535afaae0e87")  // Alemán
+            ObjectId("67351df19039535afaae0e83"),
+            ObjectId("67351df19039535afaae0e87")
         ],
         "rasgoPersonalidad": "soñador",
         "voz": {
@@ -1062,8 +1062,8 @@ db.asistenteVirtual.insertMany([
         "rol": "Educadora",
         "subrol": "Aprendizaje de idiomas",
         "idiomas_manejados": [
-            ObjectId("67351df19039535afaae0e84"), // Inglés
-            ObjectId("67351df19039535afaae0e8a")  // Japonés
+            ObjectId("67351df19039535afaae0e84"),
+            ObjectId("67351df19039535afaae0e8a")
         ],
         "rasgoPersonalidad": "seguro",
         "voz": {
@@ -1105,70 +1105,70 @@ db.asistenteVirtual.insertMany([
 db.compra.insertMany([
     {
         "email": "usuario1@example.com",
-        "id_paquete": ObjectId("673552a812d6c7b2f07102e4"), // Paquete de gemas 100
+        "id_paquete": ObjectId("673552a812d6c7b2f07102e4"),
         "fecha": new Date("2023-11-01"),
         "hora": new Date("2023-11-01T10:00:00Z"),
         "metodo_pago": "tarjeta de credito"
     },
     {
         "email": "usuario2@example.com",
-        "id_paquete": ObjectId("673552a812d6c7b2f07102e5"), // Paquete de gemas 500
+        "id_paquete": ObjectId("673552a812d6c7b2f07102e5"),
         "fecha": new Date("2023-11-02"),
         "hora": new Date("2023-11-02T11:30:00Z"),
         "metodo_pago": "tarjeta de credito"
     },
     {
         "email": "usuario3@example.com",
-        "id_paquete": ObjectId("673552a812d6c7b2f07102e6"), // Paquete de gemas 1000
+        "id_paquete": ObjectId("673552a812d6c7b2f07102e6"),
         "fecha": new Date("2023-11-03"),
         "hora": new Date("2023-11-03T14:00:00Z"),
         "metodo_pago": "tarjeta de credito"
     },
     {
         "email": "usuario4@example.com",
-        "id_paquete": ObjectId("673552a812d6c7b2f07102e7"), // Paquete de monedas 1000
+        "id_paquete": ObjectId("673552a812d6c7b2f07102e7"),
         "fecha": new Date("2023-11-04"),
         "hora": new Date("2023-11-04T09:15:00Z"),
         "metodo_pago": "tarjeta de credito"
     },
     {
         "email": "usuario5@example.com",
-        "id_paquete": ObjectId("673552a812d6c7b2f07102e8"), // Paquete de monedas 5000
+        "id_paquete": ObjectId("673552a812d6c7b2f07102e8"),
         "fecha": new Date("2023-11-05"),
         "hora": new Date("2023-11-05T16:30:00Z"),
         "metodo_pago": "tarjeta de credito"
     },
     {
         "email": "usuario6@example.com",
-        "id_paquete": ObjectId("673552a812d6c7b2f07102e9"), // Paquete de monedas 10000
+        "id_paquete": ObjectId("673552a812d6c7b2f07102e9"),
         "fecha": new Date("2023-11-06"),
         "hora": new Date("2023-11-06T18:00:00Z"),
         "metodo_pago": "tarjeta de credito"
     },
     {
         "email": "usuario7@example.com",
-        "id_paquete": ObjectId("673552a812d6c7b2f07102ea"), // Paquete de gemas 2000
+        "id_paquete": ObjectId("673552a812d6c7b2f07102ea"),
         "fecha": new Date("2023-11-07"),
         "hora": new Date("2023-11-07T13:45:00Z"),
         "metodo_pago": "tarjeta de credito"
     },
     {
         "email": "usuario8@example.com",
-        "id_paquete": ObjectId("673552a812d6c7b2f07102eb"), // Paquete de monedas 20000
+        "id_paquete": ObjectId("673552a812d6c7b2f07102eb"),
         "fecha": new Date("2023-11-08"),
         "hora": new Date("2023-11-08T15:20:00Z"),
         "metodo_pago": "tarjeta de credito"
     },
     {
         "email": "usuario9@example.com",
-        "id_paquete": ObjectId("673552a812d6c7b2f07102e5"), // Paquete de gemas 500
+        "id_paquete": ObjectId("673552a812d6c7b2f07102e5"),
         "fecha": new Date("2023-11-09"),
         "hora": new Date("2023-11-09T10:40:00Z"),
         "metodo_pago": "tarjeta de credito"
     },
     {
         "email": "usuario10@example.com",
-        "id_paquete": ObjectId("673552a812d6c7b2f07102e6"), // Paquete de gemas 1000
+        "id_paquete": ObjectId("673552a812d6c7b2f07102e6"),
         "fecha": new Date("2023-11-10"),
         "hora": new Date("2023-11-10T17:25:00Z"),
         "metodo_pago": "tarjeta de credito"
@@ -1242,31 +1242,31 @@ db.idioma.insertMany([
 db.integracion.insertMany([
     {
         "email": "usuario1@example.com",
-        "id_app": ObjectId("67351c789039535afaae0e71"), // Gestor Financiero
+        "id_app": ObjectId("67351c789039535afaae0e71"),
         "fecha_confirmacion": new Date("2023-10-01"),
         "hora_confirmacion": new Date("2023-10-01T10:30:00Z")
     },
     {
         "email": "usuario2@example.com",
-        "id_app": ObjectId("67351c789039535afaae0e72"), // Planificador de Tareas
+        "id_app": ObjectId("67351c789039535afaae0e72"),
         "fecha_confirmacion": new Date("2023-10-02"),
         "hora_confirmacion": new Date("2023-10-02T14:00:00Z")
     },
     {
         "email": "usuario3@example.com",
-        "id_app": ObjectId("67351c789039535afaae0e73"), // Juego de Estrategia
+        "id_app": ObjectId("67351c789039535afaae0e73"),
         "fecha_confirmacion": new Date("2023-10-03"),
         "hora_confirmacion": new Date("2023-10-03T09:15:00Z")
     },
     {
         "email": "usuario4@example.com",
-        "id_app": ObjectId("67351c789039535afaae0e74"), // App de Ejercicio
+        "id_app": ObjectId("67351c789039535afaae0e74"),
         "fecha_confirmacion": new Date("2023-10-04"),
         "hora_confirmacion": new Date("2023-10-04T11:45:00Z")
     },
     {
         "email": "usuario5@example.com",
-        "id_app": ObjectId("67351c789039535afaae0e75"), // Enciclopedia Virtual
+        "id_app": ObjectId("67351c789039535afaae0e75"),
         "fecha_confirmacion": new Date("2023-10-05"),
         "hora_confirmacion": new Date("2023-10-05T16:30:00Z")
     }
