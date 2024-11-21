@@ -39,3 +39,16 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(-20000, 'Ocurrió un error al crear el usuario: ' || SQLERRM);
 END;
 /
+
+-- Llamada al Procedimiento
+sql
+Copiar código
+BEGIN
+    crear_usuario(
+        p_email => 'usuario1@ejemplo.com',
+        p_nombre => 'Juan Perez',
+        p_pass => 'contrasena123',
+        p_fecha_nac => TO_DATE('01/01/2000', 'DD/MM/YYYY'),
+        p_id_pais => 1
+    );
+END;
