@@ -1,5 +1,5 @@
 # Parte 2.2
-Para esta parte 2.2, hicimos énfasis en el reqerimiento de las interacciones. Para ellos, principalmetne hicimos dos cosas: colección 'interacciones' y embebido de progreso en coleccion de usuario.
+Para esta parte 2.2, hicimos énfasis en el requerimiento de las interacciones. Para ellos, principalmetne hicimos dos cosas: colección 'interacciones' y embebido de progreso en coleccion de usuario.
 
 ## Colección 'interacciones'
 
