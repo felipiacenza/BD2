@@ -219,10 +219,6 @@ db.createCollection('usuario', {
 });
 ```
 
-
-Dentro de la colección de Asistentes Virtuales, la gran embebción es poner los datos del Avatares dentro de la colección de Asistentes Virtuaels. Además, no es necesario crear relaciones entre los idomas que maneja, la voz,su rol y sub-rol, y los rasgos de personalidad debido a que se embeben dentro de la colección.
-Otras formas de embebido de datos es mismo dentro de avatar cuando se hace un array con los intereses, la apariencia y la ropa del avatar.
-
 En la colección Asistentes Virtuales, una de las principlaes decisionse de diseño fue embeber los datos del avatar directamente dentro del documento del asistente virtual.
 
 Embebido de información en Asistente Virtual
