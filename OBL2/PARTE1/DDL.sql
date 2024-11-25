@@ -275,64 +275,37 @@ END;
 CREATE OR REPLACE TRIGGER trg_check_rol_subrol
 BEFORE INSERT OR UPDATE ON AsistenteVirtual
 FOR EACH ROW
-DECLARE
-    rol_subrol_valido INT;
 BEGIN
-    SELECT COUNT(*)
-    INTO rol_subrol_valido
-    FROM RolSubrol
-    WHERE rol = :NEW.rol
-    AND subrol = :NEW.subrol;
-
-    IF rol_subrol_valido = 0 THEN
-        RAISE_APPLICATION_ERROR(-20012, 'Combinación de rol y subrol inválida.');
+    IF :NEW.rol = 'Tutor' AND NOT (:NEW.subrol IN ('Apoyo educativo', 'Enseñanza de Idiomas')) THEN
+        RAISE_APPLICATION_ERROR(-20012, 'El rol "Tutor" solo permite el subrol "Apoyo educativo" o "Enseñanza de Idiomas".');
     END IF;
 END;
 /
 
 
-
 CREATE OR REPLACE TRIGGER trg_check_rol_suscripcion
-BEFORE INSERT OR UPDATE ON AsistenteVirtual
+BEFORE INSERT OR UPDATE ON Tiene
 FOR EACH ROW
 DECLARE
     suscripcion_tipo VARCHAR2(20);
+    asistente_rol VARCHAR2(50);
 BEGIN
     SELECT s.tipo
     INTO suscripcion_tipo
     FROM Suscripcion s
     JOIN Usuario u ON u.id_suscripcion = s.id_suscripcion
-    JOIN Tiene t ON t.email = u.email
-    WHERE t.id_asistente = :NEW.id_asistente;
+    WHERE u.email = :NEW.email;
 
-    IF suscripcion_tipo = 'gratis' AND :NEW.rol != 'Amigo' THEN
-        RAISE_APPLICATION_ERROR(-20003, 'Con la suscripción "Gratis" solo se permite el rol "Amigo".');
+    SELECT a.rol
+    INTO asistente_rol
+    FROM AsistenteVirtual a
+    WHERE a.id_asistente = :NEW.id_asistente;
+
+    IF suscripcion_tipo = 'gratis' AND asistente_rol != 'Amigo' THEN
+        RAISE_APPLICATION_ERROR(-20003, 'Con la suscripción "Gratis" solo se permite el rol "Amigo" para el asistente virtual.');
     END IF;
 END;
 /
-
-
-CREATE OR REPLACE TRIGGER trg_check_idioma_subrol
-BEFORE INSERT OR UPDATE ON AsistenteVirtual
-FOR EACH ROW
-DECLARE
-    idioma_count INT;
-BEGIN
-    IF :NEW.rol = 'Tutor' AND :NEW.subrol = 'Enseñanza de Idiomas' THEN
-        SELECT COUNT(*)
-        INTO idioma_count
-        FROM Usuario u
-        JOIN Tiene t ON u.email = t.email
-        JOIN Aprende a ON a.email = u.email
-        WHERE t.id_asistente = :NEW.id_asistente;
-
-        IF idioma_count = 0 THEN
-            RAISE_APPLICATION_ERROR(-20004, 'Debe seleccionar al menos un idioma para el subrol "Enseñanza de Idiomas".');
-        END IF;
-    END IF;
-END;
-/
-
 
 CREATE OR REPLACE TRIGGER trg_check_fecha_nac_valid
 BEFORE INSERT OR UPDATE ON Usuario
