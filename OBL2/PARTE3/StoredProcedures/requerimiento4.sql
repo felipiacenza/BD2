@@ -41,8 +41,6 @@ END;
 /
 
 -- Llamada al Procedimiento
-sql
-Copiar código
 BEGIN
     seleccionar_idioma(
         p_email => 'usuario1@ejemplo.com',

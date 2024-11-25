@@ -55,11 +55,10 @@ END;
 /
 
 -- Llamada al Procedimiento
-sql
-Copiar código
 BEGIN
     comprar_prenda(
-        p_email => 'usuario1@ejemplo.com',
-        p_id_ropa => 101
+        p_email => 'usuario@gmail.com', 
+        p_id_ropa => 999
     );
 END;
+/

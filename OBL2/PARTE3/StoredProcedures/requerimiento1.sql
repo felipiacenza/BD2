@@ -41,8 +41,6 @@ END;
 /
 
 -- Llamada al Procedimiento
-sql
-Copiar código
 BEGIN
     crear_usuario(
         p_email => 'usuario1@ejemplo.com',

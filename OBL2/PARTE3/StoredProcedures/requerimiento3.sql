@@ -24,8 +24,6 @@ END;
 /
 
 -- Llamada al Procedimiento
-sql
-Copiar código
 BEGIN
     acreditar_gemas_cumpleanos;
 END;
